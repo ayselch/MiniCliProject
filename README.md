@@ -207,30 +207,3 @@ npm run lint
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🙏 Acknowledgments
-
-- [DummyJSON](https://dummyjson.com/) for providing the products API
-- React Native community for excellent documentation
-- Material Design for icon inspiration
-
----
-
-## 📞 Support
-
-If you encounter any issues or have questions:
-
-1. Check the [React Native troubleshooting guide](https://reactnative.dev/docs/troubleshooting)
-2. Review the console logs for specific error messages
-3. Ensure all dependencies are properly installed
-4. Verify your React Native environment setup
-
-## 🔗 Useful Links
-
-- [React Native Documentation](https://reactnative.dev/docs/getting-started)
-- [React Navigation Documentation](https://reactnavigation.org/docs/getting-started)
-- [AsyncStorage Documentation](https://react-native-async-storage.github.io/async-storage/)
-- [React Native Vector Icons](https://github.com/oblador/react-native-vector-icons)
