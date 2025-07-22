@@ -1,97 +1,236 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Tasks - React Native Product Catalog App
 
-# Getting Started
+A modern React Native application featuring product browsing, search functionality, and favorites management. This app fetches product data from an API and allows users to browse, search, and save their favorite products.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## 🚀 Features
 
-## Step 1: Start Metro
+- **Product Browsing**: Browse products in a grid layout with images, titles, and descriptions
+- **Search Functionality**: Real-time search through products by title
+- **Favorites Management**: Add/remove products to/from favorites with persistent storage
+- **Pull-to-Refresh**: Refresh product data with pull-to-refresh gesture
+- **Responsive Design**: Optimized for both Android and iOS devices
+- **Persistent Storage**: Favorites are stored locally using AsyncStorage
+- **Navigation**: Tab-based navigation between Home and Favorites pages
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## 📱 Screenshots
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+The app consists of two main screens:
+- **Home Page**: Displays all products with search and favorites functionality
+- **Favorites Page**: Shows saved favorite products with remove functionality
 
-```sh
-# Using npm
+## 🛠️ Technologies Used
+
+- **React Native 0.80.1**: Core framework
+- **React Navigation**: Navigation between screens
+- **AsyncStorage**: Local data persistence
+- **React Native Vector Icons**: Icon components
+- **DummyJSON API**: Product data source
+
+## 📦 Installation
+
+### Prerequisites
+
+Make sure you have completed the [React Native environment setup](https://reactnative.dev/docs/set-up-your-environment) before proceeding.
+
+### Step 1: Clone and Install Dependencies
+
+```bash
+# Clone the repository (if applicable)
+cd tasks
+
+# Install dependencies
+npm install
+
+# For iOS, install CocoaPods dependencies
+cd ios && pod install && cd ..
+```
+
+### Step 2: Start Metro
+
+```bash
+# Start the Metro bundler
 npm start
 
-# OR using Yarn
-yarn start
+# OR with cache reset
+npx react-native start --reset-cache
 ```
 
-## Step 2: Build and run your app
+### Step 3: Run the Application
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
+#### Android
+```bash
+# Run on Android
 npm run android
 
-# OR using Yarn
-yarn android
+# OR using React Native CLI
+npx react-native run-android
 ```
 
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
+#### iOS
+```bash
+# Run on iOS
 npm run ios
 
-# OR using Yarn
-yarn ios
+# OR using React Native CLI
+npx react-native run-ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+## 🏗️ Project Structure
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+```
+tasks/
+├── components/
+│   └── CardComponents.jsx      # Product card component with favorites
+├── screens/
+│   ├── HomeScreens.jsx        # Main home screen container
+│   ├── NewsDetails.jsx        # Product detail screen
+│   └── tabs/
+│       ├── HomePage.jsx       # Home tab with product grid
+│       └── FavPage.jsx        # Favorites tab
+├── App.jsx                    # Main app component with navigation
+├── index.js                   # App entry point
+└── package.json              # Dependencies and scripts
+```
 
-## Step 3: Modify your app
+## 🔧 Key Components
 
-Now that you have successfully run the app, let's make changes!
+### HomePage.jsx
+- Fetches products from DummyJSON API
+- Implements search functionality
+- Displays products in a 2-column grid
+- Handles pull-to-refresh and infinite scroll
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+### FavPage.jsx
+- Displays saved favorite products
+- Allows removal of favorites
+- Implements empty state when no favorites exist
+- Auto-refreshes when tab comes into focus
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+### CardComponents.jsx
+- Renders individual product cards
+- Handles add/remove favorites functionality
+- Manages favorite state with AsyncStorage
+- Displays product image, title, and description
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+## 🎯 API Integration
 
-## Congratulations! :tada:
+The app uses the [DummyJSON Products API](https://dummyjson.com/products) to fetch product data:
 
-You've successfully run and modified your React Native App. :partying_face:
+```javascript
+const response = await fetch('https://dummyjson.com/products')
+const result = await response.json()
+```
 
-### Now what?
+## 💾 Data Persistence
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+Favorites are stored locally using AsyncStorage:
 
-# Troubleshooting
+```javascript
+// Save favorites
+await AsyncStorage.setItem('favorites', JSON.stringify(favoritesArray))
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+// Load favorites
+const storedFavorites = await AsyncStorage.getItem('favorites')
+```
 
-# Learn More
+## 🎨 Styling & Design
 
-To learn more about React Native, take a look at the following resources:
+- **Color Scheme**: Green theme with complementary colors
+- **Typography**: Clean, readable fonts with proper hierarchy
+- **Layout**: Responsive grid layout for products
+- **Icons**: Material Icons for favorites and navigation
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+## 🐛 Troubleshooting
+
+### Common Issues
+
+1. **Metro bundler issues**: Try clearing cache with `npx react-native start --reset-cache`
+2. **Android build issues**: Clean and rebuild with `cd android && ./gradlew clean`
+3. **iOS build issues**: Clean build folder in Xcode or run `cd ios && pod install`
+4. **AsyncStorage issues**: Ensure proper error handling in async functions
+
+### Debug Logs
+
+The app includes console logs for debugging favorites functionality:
+- Check React Native debugger console for favorite operations
+- Logs show when items are added/removed from favorites
+- Network errors are logged for API calls
+
+## 📋 Available Scripts
+
+```bash
+# Start Metro bundler
+npm start
+
+# Run on Android
+npm run android
+
+# Run on iOS
+npm run ios
+
+# Run tests
+npm test
+
+# Lint code
+npm run lint
+```
+
+## 🔮 Future Enhancements
+
+- [ ] Add product categories/filtering
+- [ ] Implement product ratings and reviews
+- [ ] Add cart functionality
+- [ ] Implement user authentication
+- [ ] Add product search suggestions
+- [ ] Implement dark/light theme toggle
+- [ ] Add product sharing functionality
+- [ ] Implement offline mode
+
+## 📝 Dependencies
+
+### Main Dependencies
+- `@react-native-async-storage/async-storage`: Local storage
+- `@react-navigation/native`: Navigation framework
+- `@react-navigation/bottom-tabs`: Tab navigation
+- `@react-navigation/native-stack`: Stack navigation
+- `react-native-vector-icons`: Icon components
+- `react-native-gesture-handler`: Gesture handling
+- `react-native-reanimated`: Animations
+- `react-native-safe-area-context`: Safe area handling
+- `react-native-screens`: Native screen optimization
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🙏 Acknowledgments
+
+- [DummyJSON](https://dummyjson.com/) for providing the products API
+- React Native community for excellent documentation
+- Material Design for icon inspiration
+
+---
+
+## 📞 Support
+
+If you encounter any issues or have questions:
+
+1. Check the [React Native troubleshooting guide](https://reactnative.dev/docs/troubleshooting)
+2. Review the console logs for specific error messages
+3. Ensure all dependencies are properly installed
+4. Verify your React Native environment setup
+
+## 🔗 Useful Links
+
+- [React Native Documentation](https://reactnative.dev/docs/getting-started)
+- [React Navigation Documentation](https://reactnavigation.org/docs/getting-started)
+- [AsyncStorage Documentation](https://react-native-async-storage.github.io/async-storage/)
+- [React Native Vector Icons](https://github.com/oblador/react-native-vector-icons)
