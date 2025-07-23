@@ -41,7 +41,7 @@ const HomePage = ({ navigation }) => {
             const newData = result.products.slice(0, PAGE_SIZE);
 
             const filteredNewData = newData.filter(newItem =>
-                !data.some(existingItem => existingItem.id === newItem.id)
+                !data.some(existItem => existItem.id === newItem.id)
             );
 
             const updatedData = [...data, ...filteredNewData];
