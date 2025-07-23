@@ -2,7 +2,6 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomePage from './tabs/HomePage';
 import FavPage from './tabs/FavPage';
-import CountryPage from './tabs/CountryPage';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Tab = createBottomTabNavigator();
@@ -29,9 +28,6 @@ export default function HomeScreens() {
           } else if (route.name === 'Favorites') {
             iconName = focused ? 'heart' : 'heart-outline';
           }
-          else if (route.name === 'CountryPage') {
-            iconName = focused ? 'globe' : 'globe-outline';
-          }
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
@@ -41,7 +37,6 @@ export default function HomeScreens() {
 
       <Tab.Screen name="HomePage" component={HomePage} />
       <Tab.Screen name="Favorites" component={FavPage} />
-      <Tab.Screen name="CountryPage" component={CountryPage} />
     </Tab.Navigator>
   );
 }
