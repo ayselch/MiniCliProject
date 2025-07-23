@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-
-
 const CardComponents = ({ image, title, description }) => {
     const [isFavorite, setIsFavorite] = useState(false)
 
